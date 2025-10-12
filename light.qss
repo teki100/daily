@@ -1,0 +1,132 @@
+/* === Global font === */
+* {
+    font-family: "Microsoft YaHei", "PingFang SC";
+    font-size: 14px;
+    color: #4B5563;
+}
+
+QListWidget, QTreeWidget {
+    outline: none;
+    border: none;
+}
+QListWidget::item:focus,
+QTreeWidget::item:focus {
+    outline: none;
+}
+
+
+/* Top bar buttons */
+QPushButton {
+    background-color: #FDFBF7;
+    color: #84B59F;
+    border: 2px solid #84B59F;
+    border-radius: 4px;
+    padding: 5px 10px;
+    min-width: 50px;
+}
+
+QPushButton:hover {
+    background-color: #84B59F;
+    color: #FDFBF7;
+}
+
+/* === Content Layout (Left List) === */
+/* 整体树样式 */
+QTreeWidget {
+    background-color: #FDFBF7;
+    color: #4B5563;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+QTreeWidget::item {
+    padding: 2.5px;
+    background-color: transparent;;
+}
+QTreeWidget::item:has-children:hover {
+    padding: 2.5px;
+    background-color: #D2E4DC;
+    color: #4B5563;
+}
+QTreeWidget::item:has-children:selected {
+    padding: 2.5px;
+    background-color: #84B59F;
+    color: #4B5563;
+}
+
+QTreeWidget::item:!has-children:hover {
+    background-color: #D2E4DC;
+    color: #4B5563;
+}
+
+QTreeWidget::item:!has-children:selected {
+    background-color: #84B59F;
+    color: white;
+}
+
+
+/* === Right Layout (Text Editor Area) === */
+QPlainTextEdit {
+    background-color: #FDFBF7;
+    color: #4B5563;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* === Bottom Bar === */
+
+QLabel#copyHint {
+    color: #84B59F;
+    font-weight: bold;
+}
+
+QLabel#timeLabel {
+    color: #84B59F;
+    font-weight: bold;
+}
+
+/* Dialog Elements */
+QDialog {
+    background-color: #FDFBF7;
+}
+
+QComboBox {
+    background-color: #FDFBF7;
+    color: #4B5563;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 6px;
+}
+
+QComboBox QAbstractItemView::item {
+    height: 25px;
+    padding-left: 6px;
+    background-color: #FDFBF7;
+    color: #4B5563;
+}
+
+QComboBox QAbstractItemView::item:selected {
+    background-color: #84B59F;
+    color: white;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 0px; 
+    border: none;
+}
+
+QComboBox:focus {
+    outline: none;
+}
+
+/* Text */
+QLineEdit, QTextEdit {
+    background-color: #FDFBF7;
+    color: #4B5563;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
