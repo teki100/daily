@@ -27,7 +27,7 @@ jobs:
       - name: Build EXE
         shell: cmd
         run: |
-          pyinstaller main.py ^
+          pyinstaller ivr_status.py ^
             --onefile ^
             --noconsole ^
             --icon note.ico ^
