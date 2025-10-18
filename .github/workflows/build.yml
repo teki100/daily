@@ -31,7 +31,9 @@ jobs:
             --onefile ^
             --noconsole ^
             --icon note.ico ^
-            --add-data "light.qss;."
+            --add-data "light.qss;." ^
+            --add-data "setting.svg;." ^
+            --hidden-import pandas
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
