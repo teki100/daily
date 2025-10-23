@@ -33,7 +33,12 @@ jobs:
             --icon note.ico ^
             --add-data "light.qss;." ^
             --add-data "setting.svg;." ^
-            --hidden-import pandas
+            --hidden-import pandas ^
+            --hidden-import numpy ^
+            --hidden-import openpyxl ^
+            --additional-hooks-dir=. ^
+            --clean ^
+            --noconfirm
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
