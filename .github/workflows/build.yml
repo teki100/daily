@@ -2,9 +2,9 @@ name: Build EXE with PyInstaller
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -22,9 +22,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pyinstaller
+          pip install pyinstaller pyqt6 appdirs
 
-      - name: Build EXE
+      - name: Build EXE with PyInstaller
         shell: cmd
         run: |
           pyinstaller ivr_status.py ^
@@ -40,7 +40,7 @@ jobs:
             --clean ^
             --noconfirm
 
-      - name: Upload artifact
+      - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
         with:
           name: App-Windows
