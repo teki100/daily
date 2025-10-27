@@ -16,10 +16,6 @@ RESOURCE_PATHS = {
     "icon": "note.ico",
     "stylesheet": "light.qss"
 }
-import os
-import sys
-import json
-from PyQt6.QtWidgets import QMessageBox
 
 
 class ConfigManager:
