@@ -22,6 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install pandas
           pip install pyinstaller pyqt6 appdirs
 
       - name: Build EXE with PyInstaller
@@ -37,8 +38,6 @@ jobs:
             --hidden-import pandas.core ^
             --hidden-import pandas.io.excel ^
             --hidden-import pandas._libs.tslibs ^
-            --hidden-import numpy ^
-            --hidden-import openpyxl ^
             --additional-hooks-dir=. ^
             --clean ^
             --noconfirm
