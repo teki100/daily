@@ -26,7 +26,6 @@ jobs:
           pip install --upgrade pip
           # 显式安装核心依赖，确保版本兼容
           pip install pandas>=2.0.0 numpy openpyxl
-          pip install -r requirements.txt  # 安装其他项目依赖
           pip install pyinstaller pyqt6 appdirs  # 安装打包工具
 
       - name: Build EXE with PyInstaller
