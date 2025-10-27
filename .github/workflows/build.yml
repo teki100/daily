@@ -18,15 +18,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'  # 可选：保留缓存加速安装，但出问题时可注释掉
 
       - name: Install dependencies
         run: |
-          pip cache purge  # 清理缓存，避免依赖冲突
-          pip install --upgrade pip
-          # 显式安装核心依赖，确保版本兼容
-          pip install pandas>=2.0.0 numpy openpyxl
-          pip install pyinstaller pyqt6 appdirs  # 安装打包工具
+          pip install -r requirements.txt
+          pip install pyinstaller pyqt6 appdirs
 
       - name: Build EXE with PyInstaller
         shell: cmd
@@ -46,11 +42,9 @@ jobs:
             --additional-hooks-dir=. ^
             --clean ^
             --noconfirm
-            --log-level=DEBUG  # 输出详细日志，便于排查
 
       - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
         with:
           name: App-Windows
           path: dist/*.exe
-           build/*.txt  # 同时上传日志文件
