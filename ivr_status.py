@@ -16,6 +16,10 @@ RESOURCE_PATHS = {
     "icon": "note.ico",
     "stylesheet": "light.qss"
 }
+import os
+import sys
+import json
+from PyQt6.QtWidgets import QMessageBox
 
 
 class ConfigManager:
@@ -148,8 +152,8 @@ class ChangeDialog(QDialog):
         self.config_manager = config_manager
 
         # 创建导入和导出的按钮
-        self.btn_shift = QPushButton("修改班次时间")
         self.btn_column = QPushButton("修改表格列名")
+        self.btn_shift = QPushButton("修改班次时间")
         self.btn_cancel = QPushButton("⛌  取消")
         self.btn_cancel.clicked.connect(self.close)
 
@@ -158,8 +162,8 @@ class ChangeDialog(QDialog):
 
         # 布局
         button_layout = QVBoxLayout()
-        button_layout.addWidget(self.btn_shift)
         button_layout.addWidget(self.btn_column)
+        button_layout.addWidget(self.btn_shift)
         button_layout.addWidget(self.btn_cancel)
 
         self.setLayout(button_layout)
@@ -348,11 +352,14 @@ class DailyReportApp(QWidget):
             return
 
         self.file_path = file_name
-        self.label.setText(f"已选择文件：{file_name}")
+        self.label.setText(f"已选择：{file_name}")
         self.daily_tree.clear()
         self.summary_tree.clear()
+        self.label.setText("生成中，请稍候...")
+        QApplication.processEvents()
         try:
             self._report_content(file_name)
+            self.label.setText(f"生成成功")
         except Exception as e:
             self.label.setText(f"生成失败：{str(e)}")
         QApplication.processEvents()  # 刷新界面
@@ -456,7 +463,7 @@ class DailyReportApp(QWidget):
         # 生成树节点
         for date_str in sorted(report_dict.keys()):
             day_item = QTreeWidgetItem(self.daily_tree)
-            day_item.setText(0, f"{date_str}")
+            day_item.setText(0, date_str.strftime("%Y-%m-%d"))
 
             # 用餐
             meal_dict = report_dict[date_str]["meal"]
@@ -532,7 +539,8 @@ class DailyReportApp(QWidget):
             end_date = dates[-1]
 
             root_item = QTreeWidgetItem(self.summary_tree)
-            root_item.setText(0, f"日期范围：{start_date} - {end_date}")
+            root_item.setText(0, f"日期范围：{start_date.strftime('%Y-%m-%d')} ~ {end_date.strftime('%Y-%m-%d')}")
+
 
             # 用餐统计
             meal_total = {}
