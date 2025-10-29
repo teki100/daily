@@ -21,9 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pandas numpy openpyxl
-          pip install pyinstaller pyqt6 appdirs
+          pip install pyinstaller pyqt6 appdirs pandas numpy openpyxl
 
       - name: Build EXE with PyInstaller
         shell: cmd
@@ -39,7 +39,8 @@ jobs:
             --hidden-import openpyxl ^
             --additional-hooks-dir=. ^
             --clean ^
-            --noconfirm
+            --noconfirm ^
+            --strip
 
       - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
