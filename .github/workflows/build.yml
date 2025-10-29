@@ -35,9 +35,8 @@ jobs:
             --add-data "light.qss;." ^
             --add-data "setting.svg;." ^
             --hidden-import pandas ^
-            --hidden-import pandas.core ^
-            --hidden-import pandas.io.excel ^
-            --hidden-import pandas._libs.tslibs ^
+            --hidden-import numpy ^
+            --hidden-import openpyxl ^
             --additional-hooks-dir=. ^
             --clean ^
             --noconfirm
