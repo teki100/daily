@@ -7,12 +7,16 @@ datas, binaries, hiddenimports = collect_all('pandas')
 hiddenimports += [
     'pandas.core',
     'pandas.core.frame',
+    'pandas.core.dtypes',
     'pandas.core.tools',
     'pandas.io',
     'pandas.io.excel',
     'pandas.io.excel._openpyxl',
+    'padas._libs',
     'pandas._libs.tslibs',
     'pandas._libs.missing',
+    'pandas.compact',
+    'pandas.util',
 ]
 
 datas += collect_data_files('pandas')
